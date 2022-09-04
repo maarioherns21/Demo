@@ -1,0 +1,25 @@
+{
+  "movies": [
+    {
+      "name": "Harry Potter",
+      "body": "Crazy good movie ",
+      "creator": "mario",
+      "id": 1,
+      "images": "./images/HarryPotter.jpg"
+    },
+    {
+      "name": "Dragon Ball",
+      "body": "Love this movie so mcuh",
+      "creator": "mario",
+      "id": 3,
+      "images": "./images/DragonBall.jpg"
+    },
+    {
+      "name": "Avangers",
+      "body": "One of the bst movies in the world",
+      "creator": "Mark",
+      "id": 4,
+      "images": "./images/Avengers.jpg"
+    }
+  ]
+}
