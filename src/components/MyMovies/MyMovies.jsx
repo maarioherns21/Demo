@@ -8,7 +8,7 @@ export default function MyMovies () {
         <div>
           {error && <div>{error}</div>}
           {isLoading && <div>Loading...</div>}
-         {movies &&  <MovieList movies={movies.filter((movie) => movie.creator !== "Mark")} handleDelete={handleDelete}/>}
+         {movies &&  <MovieList movies={movies.filter((movie) => movie.creator === "mario")} title="Mario's Movies" handleDelete={handleDelete}/>}
         </div>
     )
 } 

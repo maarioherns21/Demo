@@ -25,11 +25,11 @@ export default function MovieDetails() {
     {movie && (
         <div>
             <h1>{movie.name}</h1>
+            <img src={movie.images} alt={movie.name}/>
             <h2>{movie.body}</h2>
             <button onClick={() => handleDelete(movie.id)}>Delete</button>
         </div>
     )}
 </div>
-
  )
 }
