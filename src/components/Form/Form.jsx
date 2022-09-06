@@ -7,13 +7,14 @@ const [name, setName] =useState("")
 const [body, setBody]= useState("")
 const [creator, setCreator] = useState("mario")
 const [isPending , setIsPending] = useState(false)
+const [images, setImages]= useState("")
 const navigate = useNavigate();
 const POST = "POST"
 
 
 const handleSubmit = (e) =>{
 e.preventDefault();
-const movie = {name, body, creator} ;
+const movie = {name, body, creator, images} ;
 setIsPending(true)
 fetch(`http://localhost:8000/movies/` , {
     method: POST,
@@ -35,6 +36,7 @@ fetch(`http://localhost:8000/movies/` , {
                     <option value="mario">mario</option>
                     <option value="Mark">mark</option>
                 </select>
+                <input  value={images} type="url" onChange={(e) => setImages(e.target.value)}/>
               { !isPending && <button>Add Movie</button>}
                { isPending && <button>Adding..</button>}
                 <h1>{name}</h1>
