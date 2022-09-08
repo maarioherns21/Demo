@@ -10,11 +10,10 @@ export default function MovieList({movies, title, handleDelete}) {
   { movies.map((movie) => (
         <div key={movie.id}>
             <h2>{movie.name}</h2>
-            <img  src={movie.images} alt={movie.name}/>
             <Link to={`/movie/${movie.id}`}>
+               <img  src={movie.images} alt={movie.name}/>
                <h3>{movie.body}</h3>
             </Link>
-         
             <button onClick={() => handleDelete(movie.id)}>Delete</button>
         </div>
     ))

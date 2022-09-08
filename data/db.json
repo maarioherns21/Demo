@@ -27,13 +27,6 @@
       "creator": "mark",
       "id": 4,
       "images": "../images/Avengers.jpg"
-    },
-    {
-      "name": "csacsa",
-      "body": "scacsac",
-      "creator": "Mark",
-      "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
-      "id": 5
     }
   ]
 }
