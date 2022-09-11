@@ -4,45 +4,42 @@ import { useNavigate } from "react-router-dom";
 
 export default function Form() {
 const [name, setName] =useState("")
-const [body, setBody]= useState("")
-const [creator, setCreator] = useState("mario")
-const [isPending , setIsPending] = useState(false)
-const [images, setImages]= useState("")
+const [body, setBody]=useState("")
+const [creator, setCreator]= useState("mario")
+const [images, setImages] =useState("")
 const navigate = useNavigate();
-const POST = "POST"
-
 
 const handleSubmit = (e) =>{
 e.preventDefault();
-const movie = {name, body, creator, images} ;
-setIsPending(true)
-fetch(`http://localhost:8000/movies/` , {
-    method: POST,
-    headers: { "Content-Type" : "application/json" },
-    body : JSON.stringify(movie)
+const movie ={name, body , creator , images};
+fetch(`http://localhost:8000/movies/`, {
+    method: "POST",
+    headers: {  "Content-Type" : "application/json"},
+    body: JSON.stringify(movie)
 })
 .then(() =>{
-    console.log("Movie Added" , movie) 
+    console.log("Added Movie", movie)
     navigate("/")
-    setIsPending(false)
+
 })
 }
     return (
         <div className="form">
             <form onSubmit={handleSubmit}>
-                <input value={name} onChange={(e) =>  setName(e.target.value)} placeholder="Movie name" />
-                <textarea value={body} onChange={(e) => setBody(e.target.value)}  placeholder="Movie details"/> 
-                <select value={creator} onChange={(e)=> setCreator(e.target.value)}>
-                    <option value="mario">mario</option>
-                    <option value="Mark">mark</option>
+                <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Movie Name" />
+                <textarea  value={body} onChange={(e) => setBody(e.target.value)} placeholder="Movie info" />
+                <select value={creator} onChange={(e) => setCreator(e.target.value)}>
+                    <option value="mario">Mario</option>
+                    <option value="mark">Mark</option>
                 </select>
-                <input  value={images} type="url" onChange={(e) => setImages(e.target.value)}/>
-              { !isPending && <button>Add Movie</button>}
-               { isPending && <button>Adding..</button>}
+                <input value={images} onChange={(e) => setImages(e.target.value)} type="url" placeholder="Image URL" /> 
+                <button>Add Movie</button>
                 <h1>{name}</h1>
                 <h2>{body}</h2>
                 <h3>{creator}</h3>
+                <img src={images} alt={name}/>
             </form>
+
         </div>
     )
 }

@@ -22,11 +22,18 @@
       "images": "../images/DragonBall.jpg"
     },
     {
-      "name": "Avangers",
+      "name": "Avanger",
       "body": "One of the bst movies in the world",
       "creator": "mark",
-      "id": 4,
-      "images": "../images/Avengers.jpg"
+      "images": "../images/Avengers.jpg",
+      "id": 4
+    },
+    {
+      "name": "thor 10",
+      "body": "super nicce movie",
+      "creator": "mark",
+      "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
+      "id": 5
     }
   ]
 }
