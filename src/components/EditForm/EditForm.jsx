@@ -1,4 +1,3 @@
-import { click } from "@testing-library/user-event/dist/click";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Form.css";
@@ -17,18 +16,33 @@ export default function EditForm({movie}) {
 
     
     
-   const handleUpdate = () => {
-     const updateMovie = { name, body, creator, images };
-     fetch(`http://localhost:8000/movies/` + id, {
-       method: PUT,
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify(updateMovie),
-     }).then(() => {
-       console.log("Movie Updated", updateMovie);
-       setIsPending(false);
-       navigate("/");
-     });
-   };
+//    const handleUpdate = () => {
+//      const updateMovie = { name, body, creator, images };
+//      fetch(`http://localhost:8000/movies/` + id, {
+//        method: PUT,
+//        headers: { "Content-Type": "application/json" },
+//        body: JSON.stringify(updateMovie),
+//      }).then(() => {
+//        console.log("Movie Updated", updateMovie);
+//        setIsPending(false);
+//        navigate("/");
+//      });
+//    };
+
+
+const handleUpdate = () =>{
+    const updateMovie = {name, body, creator, images};
+    fetch(`http://localhost:8000/movies/` + id, {
+        method: PUT,
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(updateMovie)
+    })
+    .then(() => {
+        console.log("Updatd Movie", updateMovie)
+        navigate("/")
+        setIsPending(false)
+    })
+}
 
     return (
             <div className="modal form">

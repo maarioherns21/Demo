@@ -1,6 +1,5 @@
 //this is the main movies 
-import { useEffect } from "react";
-import { useState } from "react";
+
 import MovieList from "../MovieList/MovieList";
 import useFetch from "../useFetch/useFetch";
 

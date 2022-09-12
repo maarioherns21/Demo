@@ -2,7 +2,6 @@
 /// you havbe to use the "use " keyword in order to make it into a hook 
 ///this is a hook tha t was created , so it can be used with other components if needed
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 
 export default function useFetch (url){
     const [movies, setMovies] = useState(null);
