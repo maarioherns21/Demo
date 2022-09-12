@@ -4,8 +4,8 @@
       "name": "Harry Potter",
       "body": "Crazy good movie ",
       "creator": "mario",
-      "id": 1,
-      "images": "../images/HarryPotter.jpg"
+      "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
+      "id": 1
     },
     {
       "name": "thor",
@@ -29,9 +29,9 @@
       "id": 4
     },
     {
-      "name": "thor 10",
+      "name": "thor 11",
       "body": "super nicce movie",
-      "creator": "mark",
+      "creator": "Mark",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
       "id": 5
     }

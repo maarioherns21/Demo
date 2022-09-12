@@ -31,8 +31,8 @@ export default function EditForm({movie}) {
    };
 
     return (
-            <div className="form">
-            <form onSubmit={handleUpdate}>
+            <div className="modal form">
+            <form  className="modal-content" onSubmit={handleUpdate}>
                 <input value={name} onChange={(e) =>  setName(e.target.value)} placeholder="Movie name" />
                 <textarea value={body} onChange={(e) => setBody(e.target.value)}  placeholder="Movie details"/> 
                 <select value={creator} onChange={(e)=> setCreator(e.target.value)}>
@@ -40,12 +40,8 @@ export default function EditForm({movie}) {
                     <option value="Mark">mark</option>
                 </select>
                 <input  value={images} type="url" onChange={(e) => setImages(e.target.value)}/>
-              { !isPending && <button>Edit Movie</button>}
+              {!isPending && <button>Update</button>}
                { isPending && <button>Updating...</button>}
-                <h1>{name}</h1>
-                <h2>{body}</h2>
-                <h3>{creator}</h3>
-                <img src={images} alt={name}/>
             </form>
         </div>
     )
