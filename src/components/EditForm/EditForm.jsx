@@ -9,7 +9,7 @@ export default function EditForm({movie}) {
     const [body, setBody]= useState(movie.body)
     const [creator, setCreator] = useState(movie.creator)
     const [isPending , setIsPending] = useState(false)
-    const [images, setImages]= useState("")
+    const [images, setImages]= useState(movie.images)
     const navigate = useNavigate();
     const PUT = "PUT"
     const {id} =useParams();
@@ -32,6 +32,7 @@ export default function EditForm({movie}) {
 
 const handleUpdate = () =>{
     const updateMovie = {name, body, creator, images};
+    setIsPending(true)
     fetch(`http://localhost:8000/movies/` + id, {
         method: PUT,
         headers: {"Content-Type": "application/json"},
@@ -54,7 +55,7 @@ const handleUpdate = () =>{
                     <option value="Mark">mark</option>
                 </select>
                 <input  value={images} type="url" onChange={(e) => setImages(e.target.value)}/>
-              {!isPending && <button>Update</button>}
+               {!isPending && <button>Update</button>}
                { isPending && <button>Updating...</button>}
             </form>
         </div>

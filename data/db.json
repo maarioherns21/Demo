@@ -27,13 +27,6 @@
       "creator": "mark",
       "images": "../images/Avengers.jpg",
       "id": 4
-    },
-    {
-      "name": "thor 15",
-      "body": "super nicce movie",
-      "creator": "mario",
-      "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
-      "id": 5
     }
   ]
 }
