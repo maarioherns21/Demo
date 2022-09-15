@@ -18,7 +18,7 @@ fetch(`http://localhost:8000/movies/`, {
     body: JSON.stringify(movie)
 })
 .then(() =>{
-    console.log("Added Movie", movie)
+    console.log(` Added ${movie.name} to db`, movie )
     navigate("/")
 
 })

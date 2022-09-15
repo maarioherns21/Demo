@@ -5,14 +5,14 @@ import "./Form.css";
 
 
 export default function EditForm({movie}) {
-    const [name, setName] =useState(movie.name)
-    const [body, setBody]= useState(movie.body)
-    const [creator, setCreator] = useState(movie.creator)
-    const [isPending , setIsPending] = useState(false)
-    const [images, setImages]= useState(movie.images)
+    const [name, setName] = useState(movie.name);
+    const [body, setBody] = useState(movie.body);
+    const [creator, setCreator] = useState(movie.creator);
+    const [isPending, setIsPending] = useState(false);
+    const [images, setImages] = useState(movie.images);
     const navigate = useNavigate();
-    const PUT = "PUT"
-    const {id} =useParams();
+    const PUT = "PUT";
+    const { id } = useParams();
 
     
     
@@ -30,20 +30,19 @@ export default function EditForm({movie}) {
 //    };
 
 
-const handleUpdate = () =>{
-    const updateMovie = {name, body, creator, images};
-    setIsPending(true)
-    fetch(`http://localhost:8000/movies/` + id, {
-        method: PUT,
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(updateMovie)
-    })
-    .then(() => {
-        console.log("Updatd Movie", updateMovie)
-        navigate("/")
-        setIsPending(false)
-    })
-}
+const handleUpdate = () => {
+  const updateMovie = { name, body, creator, images };
+  setIsPending(true);
+  fetch(`http://localhost:8000/movies/` + id, {
+    method: PUT,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updateMovie),
+  }).then(() => {
+    console.log("Updatd Movie", updateMovie);
+    navigate("/");
+    setIsPending(false);
+  });
+};
 
     return (
             <div className="modal form">
