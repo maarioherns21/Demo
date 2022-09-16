@@ -4,11 +4,9 @@
 import { useEffect, useState } from "react"
 
 export default function useFetch (url){
-    const [movies, setMovies] = useState(null);
+    const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    
-    
     const handleDelete =(id) =>{
     const newArr= movies.filter((movie) => movie.id !== id)
     setMovies(newArr)

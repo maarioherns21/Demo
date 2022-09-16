@@ -8,8 +8,6 @@ export default function Home (){
         <>
         <div>
           <Movies />
-          <Button />
-          <NewMovies />
         </div>
         </>
     )
