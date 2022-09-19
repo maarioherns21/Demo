@@ -1,18 +1,18 @@
 {
   "movies": [
     {
-      "name": "Harry Potter 5",
+      "name": "Harry Potter 8",
       "body": "Crazy good movie ",
       "creator": "mario",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
       "id": 1
     },
     {
-      "name": "thor",
+      "name": "thor 3",
       "body": "Love this movie so Much amazigng movie",
       "creator": "mario",
-      "id": 2,
-      "images": "../images/Thor.jpg"
+      "images": "../images/Thor.jpg",
+      "id": 2
     },
     {
       "name": "Dragon Ball",
