@@ -14,11 +14,11 @@ export default function EditForm({ movie }) {
   const PUT = "PUT";
   const { id } = useParams();
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     const updateMovie = { name, body, creator, images };
     setIsPending(true);
-    fetch(`http://localhost:8000/movies/${id}`, {
+    await fetch(`http://localhost:8000/movies/${id}`, {
       method: PUT,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updateMovie),

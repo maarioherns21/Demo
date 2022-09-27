@@ -10,8 +10,8 @@ export default function MovieDetails() {
  const {movies :  movie, error, isLoading} = useFetch(`http://localhost:8000/movies/` + id)
  const navigate = useNavigate();
 
-const handleDelete = () =>{
-    fetch(`http://localhost:8000/movies/` + id , {
+const handleDelete = async () =>{
+   await fetch(`http://localhost:8000/movies/` + id , {
         method: "DELETE"
     })
     .then(() => {
@@ -19,6 +19,19 @@ const handleDelete = () =>{
         navigate("/")
     })
 }
+
+
+// const handleDelete = async () =>{
+//   if(window.confirm("are you sure you want to delete?")) {
+//     await fetch(`http://localhost:8000/movies/` + id , {
+//       method: "DELETE"
+//   })
+//       console.log(` Deleted ${movie.name}`)
+//       navigate("/")
+//   }
+// }
+
+
  return (
    <div>
      {error && <div>{error}</div>}

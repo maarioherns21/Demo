@@ -9,10 +9,10 @@ const [creator, setCreator]= useState("mario")
 const [images, setImages] =useState("")
 const navigate = useNavigate();
 
-const handleSubmit = (e) =>{
+const handleSubmit =  async (e) =>{
 e.preventDefault();
 const movie ={name, body , creator , images};
-fetch(`http://localhost:8000/movies/`, {
+await fetch(`http://localhost:8000/movies/`, {
     method: "POST",
     headers: {  "Content-Type" : "application/json"},
     body: JSON.stringify(movie)

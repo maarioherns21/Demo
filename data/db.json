@@ -1,7 +1,7 @@
 {
   "movies": [
     {
-      "name": "Harry Potter 8",
+      "name": "Harry Potter 7",
       "body": "Crazy good movie ",
       "creator": "mario",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
@@ -36,11 +36,18 @@
       "id": 5
     },
     {
-      "name": "thor 5",
+      "name": "thor 4",
       "body": "cool",
       "creator": "mario",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
       "id": 6
+    },
+    {
+      "name": "thor 20",
+      "body": "super nice movie",
+      "creator": "mario",
+      "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
+      "id": 7
     }
   ]
 }
