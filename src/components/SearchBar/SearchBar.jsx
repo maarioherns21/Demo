@@ -20,7 +20,7 @@ export default function SearchBar ({movies, handleDelete}) {
     })
   }, [input]);
 
-console.log(output)
+
 
   return(
     <div>
@@ -29,7 +29,9 @@ console.log(output)
         <input id="search-box" onChange={(e) => setInPut(e.target.value)} />
       </div>
       <Popup className="form modal" trigger={<button>search</button>}>
-    {output.map((movie) => (
+    {output
+    .sort((a, b) =>  a.name > b.name ? 1 : -1 )
+    .map((movie) => (
         <div key={movie.id}>
             <h2>{movie.name}</h2>
             <Link to={`/movie/${movie.id}`}>
