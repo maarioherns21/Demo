@@ -1,45 +1,51 @@
 import { useState } from "react";
 import "./Form.css";
 import { useNavigate } from "react-router-dom";
+import useConstants from "../../useConstants/useConstants";
+import FileBase64 from "react-file-base64"
+
 
 export default function Form() {
-const [name, setName] =useState("")
-const [body, setBody]=useState("")
-const [creator, setCreator]= useState("mario")
-const [images, setImages] =useState("")
-const navigate = useNavigate();
+  const { url, POST } = useConstants();
+  const [formData, setFormData] =useState({ name: "", body: "", creator: "mario" , images: ""})
+  // const [name, setName] = useState("");
+  // const [body, setBody] = useState("");
+  // const [creator, setCreator] = useState("mario");
+  // const [images, setImages] = useState("");
+  const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
 
-const handleSubmit =  async (e) =>{
-e.preventDefault();
-const movie ={name, body , creator , images};
-await fetch(`http://localhost:8000/movies/`, {
-    method: "POST",
-    headers: {  "Content-Type" : "application/json"},
-    body: JSON.stringify(movie)
-})
-.then(() =>{
-    console.log(` Added ${movie.name} to db`, movie )
-    navigate("/")
 
-})
-}
-    return (
-        <div className="form">
-            <form onSubmit={handleSubmit}>
-                <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Movie Name" />
-                <textarea  value={body} onChange={(e) => setBody(e.target.value)} placeholder="Movie info" />
-                <select value={creator} onChange={(e) => setCreator(e.target.value)}>
-                    <option value="mario">Mario</option>
-                    <option value="mark">Mark</option>
-                </select>
-                <input value={images} onChange={(e) => setImages(e.target.value)} type="url" placeholder="Image URL" /> 
-                <button>Add Movie</button>
-                <h1>{name}</h1>
-                <h2>{body}</h2>
-                <h3>{creator}</h3>
-                <img src={images} alt={name}/>
-            </form>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const movie = { name: formData.name, body: formData.body, creator: formData.creator, images: formData.images };
+    console.log(movie)
+    setIsPending(true);
+    await fetch(url, {
+      method: POST,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(movie),
+    }).then(() => {
+      setIsPending(false);
+      console.log(` ${movie.name}  was added into the data base`);
+      navigate("/");
+    });
+  };
 
-        </div>
-    )
+
+  return (
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} />
+        <textarea value={formData.body} onChange={(e) => setFormData({...formData, body : e.target.value})} />
+        <select value={formData.creator} onChange={(e) => setFormData({...formData, creator: e.target.value})}>
+          <option value="mario">mario</option>
+          <option value="mark">mark</option>
+        </select>
+        <FileBase64 value={formData.images} type="file" multiple={false} onDone={({base64}) => setFormData({ ...formData, images: base64})}/>
+        {!isPending && <button>Add Movie</button>}
+        {isPending && <button>Adding...</button>}
+      </form>
+    </div>
+  );
 }

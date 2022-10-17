@@ -1,52 +1,40 @@
-
 import { useNavigate, useParams } from "react-router-dom";
 import EditForm from "../EditForm/EditForm";
 import useFetch from "../useFetch/useFetch";
 import "./MovieDetails.css";
 import Popup from "reactjs-popup";
+import useConstants from "../../useConstants/useConstants";
 
 export default function MovieDetails() {
- const {id} = useParams();
- const {movies :  movie, error, isLoading} = useFetch(`http://localhost:8000/movies/` + id)
- const navigate = useNavigate();
+  const { id } = useParams();
+  const { url, DELETE } = useConstants();
+  const { movies: movie, isLoading, error } = useFetch(`${url}/${id}`);
+  const navigate = useNavigate();
 
-const handleDelete = async () =>{
-   await fetch(`http://localhost:8000/movies/` + id , {
-        method: "DELETE"
-    })
-    .then(() => {
-        console.log(` Deleted ${movie.name}`)
-        navigate("/")
-    })
-}
+  const handleDelete = async () => {
+    await fetch(`${url}/${id}`, {
+      method: DELETE,
+    }).then(() => {
+      console.log(`${movie.name} was deleted from the database`);
+      navigate("/");
+    });
+  };
 
-
-// const handleDelete = async () =>{
-//   if(window.confirm("are you sure you want to delete?")) {
-//     await fetch(`http://localhost:8000/movies/` + id , {
-//       method: "DELETE"
-//   })
-//       console.log(` Deleted ${movie.name}`)
-//       navigate("/")
-//   }
-// }
-
-
- return (
-   <div>
-     {error && <div>{error}</div>}
-     {isLoading && <div>Loading...</div>}
-     {movie && (
-       <div>
-         <h1>{movie.name}</h1>
-         <img src={movie.images} alt={movie.name} />
-         <h2>{movie.body}</h2>
-         <button onClick={() => handleDelete(movie.id)}>delete</button>
-         <Popup trigger={<button>Edit Movie</button>} position="right center">
-          {<EditForm movie={movie} />}
-         </Popup>
-       </div>
-     )}
-   </div>
- );
+  return (
+    <div>
+      {error && <div>{error}</div>}
+      {isLoading && <div>Loading....</div>}
+      {movie && (
+        <div>
+          <h2>{movie.name}</h2>
+          <img src={movie.images} alt={movie.name} />
+          <h3>{movie.body}</h3>
+          <button onClick={handleDelete}>delete</button>
+          <Popup trigger={<button>update</button>}>
+            <EditForm movie={movie} /> 
+          </Popup>
+        </div>
+      )}
+    </div>
+  );
 }

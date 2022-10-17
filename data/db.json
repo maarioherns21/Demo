@@ -1,9 +1,9 @@
 {
   "movies": [
     {
-      "name": "Harry Potter 7",
-      "body": "Crazy good movie ",
-      "creator": "mario",
+      "name": "Harry Potter 1",
+      "body": "Crazy good movie and amazing",
+      "creator": "Harry Potter 0",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
       "id": 1
     },
@@ -15,11 +15,11 @@
       "id": 2
     },
     {
-      "name": "Dragon Ball",
+      "name": "Dragon Ball 2",
       "body": "Love this movie so mcuh",
-      "creator": "mario",
-      "id": 3,
-      "images": "../images/DragonBall.jpg"
+      "creator": "Dragon Ball",
+      "images": "../images/DragonBall.jpg",
+      "id": 3
     },
     {
       "name": "Avanger",
@@ -36,18 +36,32 @@
       "id": 5
     },
     {
-      "name": "thor 4",
-      "body": "cool",
+      "name": "Thor 2",
+      "body": "cool as fresh movie",
       "creator": "mario",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
       "id": 6
     },
     {
-      "name": "thor 20",
+      "name": "thor 1",
       "body": "super nice movie",
       "creator": "mario",
       "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
       "id": 7
+    },
+    {
+      "name": "thor 30",
+      "body": "super cool movie",
+      "creator": "mark",
+      "images": "https://upload.wikimedia.org/wikipedia/en/7/7d/Thor_Ragnarok_poster.jpg",
+      "id": 8
+    },
+    {
+      "name": "robotic 2020",
+      "body": "super nice movie aaa",
+      "creator": "mario",
+      "images": "https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png",
+      "id": 9
     }
   ]
 }
