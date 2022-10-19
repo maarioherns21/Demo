@@ -27,10 +27,15 @@ export default function EditForm({ movie }) {
       body: JSON.stringify(UpdateMovie),
     }).then(() => {
       setIsPending(false);
-      console.log(` ${UpdateMovie.name}  was added into the data base`);
+      console.log(`${UpdateMovie.name} was updated into the data base`);
       navigate("/");
     });
   };
+
+  const clear = (e) => {
+    e.preventDefault()
+    setFormData({ name: movie.name, body: movie.body, creator: movie.creator, images: movie.images })
+  }
 
 
   return (
@@ -45,6 +50,7 @@ export default function EditForm({ movie }) {
         <FileBase64 value={formData.images} type="file" multiple={false} onDone={({base64}) => setFormData({ ...formData, images: base64})}/>
         {!isPending && <button>Update Movie</button>}
         {isPending && <button>Updating...</button>}
+        <button onClick={clear}>clear</button>
       </form>
     </div>
   );
