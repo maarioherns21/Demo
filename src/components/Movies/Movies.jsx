@@ -26,11 +26,11 @@ export default function Movies() {
 
   return (
     <div>
-      {error && <div>{error}</div>}
-      {isLoading && <div>Loading...</div>}
-      <SearchBar movies={movies}/>
+      <div>{error ? error : null}</div>
+      <div>{isLoading ? "Loading..." : ""}</div>
+      <SearchBar movies={movies} />
       <MovieList movies={currentMovies} title="All Movies" />
-      <Pagination  totalMovies={movies.length} moviesPerPage={moviesPerPage}  setCurrentPage={setCurrentPage}/>
+      <Pagination totalMovies={movies.length} moviesPerPage={moviesPerPage} setCurrentPage={setCurrentPage} />
     </div>
   );
 } 
