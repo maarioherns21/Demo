@@ -7,7 +7,7 @@ export default function useToken() {
     const userToken = JSON.parse(tokenString);
     return userToken?.username;
   };
-
+  // userToken?.token;  the key was name token
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
@@ -15,6 +15,7 @@ export default function useToken() {
     setToken(userToken.username);
   };
 
+  // userToken.token
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("token")));
 
   const logout = () => {
