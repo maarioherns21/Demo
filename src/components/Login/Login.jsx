@@ -3,56 +3,79 @@ import "./Login.css";
 import PropTypes from "prop-types";
 
 
-export default function Login({ setToken }) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [loginForm, setLoginForm] = useState({ username: "", password: "" });
+export default function Login({setToken}) {
+"http://localhost:4000/movies/login"
+const [loginData, setLoginData] = useState({ username: "", password: "" });
+const [log, setLog] = useState(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = { username: loginForm.username, password: loginForm.password };
-    await fetch("http://localhost:4000/movies/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(token),
+const handleLogin = async (e) => {
+  e.preventDefault();
+  const token = { username: loginData.username, password: loginData.password };
+  await fetch("http://localhost:9000/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(token),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      setToken(data);
+      console.log(data);
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("==>", data);
-        setToken(data);
-        setIsLogin(true);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setIsLogin(false);
-      });
-  };
-
-  return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <h1>Please Login</h1>
-        <input
-          type="text"
-          placeholder="username"
-          value={loginForm.username}
-          onChange={(e) =>
-            setLoginForm({ ...loginForm, username: e.target.value })
-          }
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={loginForm.password}
-          onChange={(e) =>
-            setLoginForm({ ...loginForm, password: e.target.value })
-          }
-        />
-        <button type="submit">submit</button>
-      </form>
-    </div>
-  );
-}
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
+    .catch((error) => {
+      console.log(error.message);
+    });
 };
+
+const handleLog = async (e) => {
+  e.preventDefault();
+  const token = { username: loginData.username, password: loginData.password };
+  await fetch("http://localhost:9000/users")
+    .then((res) => res.json())
+    .then((data) => {
+      for (let tok in data) {
+        if (
+          token.username.toLowerCase() === data[tok].username.toLowerCase() &&
+          token.password.toLowerCase() === data[tok].password.toLowerCase()
+        ) {
+          setToken(token);
+          setLog(true);
+        } else {
+          console.log("the passowrd wasnt correct");
+          setLog(false);
+        }
+      }
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
+return (
+  <div className="form">
+   {log ? (
+   <> 
+     <h1>Log in</h1>
+    <form onSubmit={handleLog} >
+      <input value={loginData.username} onChange={(e)=> setLoginData({...loginData, username: e.target.value})} />
+      <input  value={loginData.password} onChange={(e)=> setLoginData({...loginData, password: e.target.value})} />
+      <button>Log in</button>
+    </form>
+    </> 
+    ) : (
+      <>
+      <h1>Sign up</h1>
+      <form onSubmit={handleLogin} >
+      <input value={loginData.username} onChange={(e)=> setLoginData({...loginData, username: e.target.value})} />
+      <input  value={loginData.password} onChange={(e)=> setLoginData({...loginData, password: e.target.value})} />
+      <button>Sign Up</button>
+    </form>
+      </>
+    )}
+  </div>
+)
+
+}
+  
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
