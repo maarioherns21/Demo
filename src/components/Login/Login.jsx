@@ -56,8 +56,8 @@ return (
    <> 
      <h1>Log in</h1>
     <form onSubmit={handleLog} >
-      <input value={loginData.username} onChange={(e)=> setLoginData({...loginData, username: e.target.value})} />
-      <input  value={loginData.password} onChange={(e)=> setLoginData({...loginData, password: e.target.value})} />
+      <input type="email" value={loginData.username} onChange={(e)=> setLoginData({...loginData, username: e.target.value})} placeholder="email" />
+      <input type="password" value={loginData.password} onChange={(e)=> setLoginData({...loginData, password: e.target.value})} placeholder="password" />
       <button>Log in</button>
     </form>
     </> 
@@ -65,8 +65,8 @@ return (
       <>
       <h1>Sign up</h1>
       <form onSubmit={handleLogin} >
-      <input value={loginData.username} onChange={(e)=> setLoginData({...loginData, username: e.target.value})} />
-      <input  value={loginData.password} onChange={(e)=> setLoginData({...loginData, password: e.target.value})} />
+      <input type="email" value={loginData.username} onChange={(e)=> setLoginData({...loginData, username: e.target.value})} placeholder="email" />
+      <input type="password" value={loginData.password} onChange={(e)=> setLoginData({...loginData, password: e.target.value})} placeholder="password" />
       <button>Sign Up</button>
     </form>
       </>
